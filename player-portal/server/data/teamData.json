@@ -1,0 +1,18 @@
+{
+  "TeamA": {
+    "players": [],
+    "total_points": 0
+  },
+  "TeamB": {
+    "players": [],
+    "total_points": 0
+  },
+  "TeamC": {
+    "players": [],
+    "total_points": 0
+  },
+  "TeamD": {
+    "players": [],
+    "total_points": 0
+  }
+}

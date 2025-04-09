@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Player Display Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1 class="title">Player Up For Auction</h1>
+
+  <div id="playerContainer" class="player-box-layout"></div>
+
+  <button id="startReauctionBtn" style="display:none;">Start Re-Auction</button>
+
+  <!-- Team Selection Modal -->
+  <!-- Modal -->
+  <div id="sellModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2>Sell Player</h2>
+      <label for="teamSelect">Select Team:</label>
+      <select id="teamSelect">
+        <option value="TeamA">TeamA</option>
+        <option value="TeamB">TeamB</option>
+        <option value="TeamC">TeamC</option>
+        <option value="TeamD">TeamD</option>
+      </select>
+
+      <label for="soldPoints">Sold For (Points):</label>
+      <input type="number" id="soldPoints" />
+
+      <button id="confirmSell">Confirm</button>
+      <button id="cancelSell">Cancel</button>
+    </div>
+  </div>
+
+  <button id="resetBtn">Reset</button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

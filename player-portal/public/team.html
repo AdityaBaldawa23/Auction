@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Team Overview</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffffff;
+    }
+
+    #currentPlayerSection {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+    }
+
+    #currentPlayerSection img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+
+    #currentPlayerContent {
+      display: flex;
+      align-items: center;
+    }
+
+    #currentPlayerDetails {
+      flex: 1;
+    }
+
+    #teamsContainer {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .team-box {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+    }
+
+    .team-box h2 {
+      color: #64b5f6;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      color: #e0e0e0;
+    }
+
+    th, td {
+      border: 1px solid #333;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #2c2c2c;
+    }
+
+    tr:nth-child(even) {
+      background-color: #1a1a1a;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #222;
+    }
+  </style>
+</head>
+<body>
+  <h1>🏏 Team Player Overview</h1>
+
+  <!-- Current Player Section -->
+  <div id="currentPlayerSection">
+    <h2>🎯 Currently Being Auctioned</h2>
+    <div id="currentPlayerContent">
+      <img id="playerPhoto" src="" alt="Player" />
+      <div id="currentPlayerDetails">
+        <p><strong>Name:</strong> <span id="playerName"></span></p>
+        <p><strong>Age:</strong> <span id="playerAge"></span></p>
+        <p><strong>Previous Team:</strong> <span id="playerTeam"></span></p>
+        <p><strong>Current Points:</strong> <span id="playerCurrentPoints"></span></p>
+        <p><strong>Previous Points:</strong> <span id="playerPreviousPoints"></span></p>
+        <p><strong>Achievements:</strong> <span id="playerAchievements"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Teams Overview -->
+  <div id="teamsContainer"></div>
+
+  <script>
+    // Fetch current player being auctioned
+    fetch("http://localhost:5000/api/current-player")
+      .then(res => res.json())
+      .then(player => {
+        document.getElementById("playerName").textContent = player.player_name;
+        document.getElementById("playerAge").textContent = player.age;
+        document.getElementById("playerTeam").textContent = player.previous_team;
+        document.getElementById("playerCurrentPoints").textContent = player.current_points;
+        document.getElementById("playerPreviousPoints").textContent = player.previous_points;
+        document.getElementById("playerAchievements").textContent = player.achievements;
+        document.getElementById("playerPhoto").src = player.photo !== "N/A" ? player.photo : "https://via.placeholder.com/100";
+      })
+      .catch(err => {
+        console.error("Failed to fetch current player:", err);
+        document.getElementById("currentPlayerSection").style.display = "none";
+      });
+
+    // Fetch team overview
+    fetch("http://localhost:5000/api/teams")
+      .then((res) => res.json())
+      .then((data) => {
+        const container = document.getElementById("teamsContainer");
+
+        Object.entries(data).forEach(([teamName, teamData]) => {
+          const box = document.createElement("div");
+          box.className = "team-box";
+
+          const title = document.createElement("h2");
+          title.textContent = teamName;
+          box.appendChild(title);
+
+          const totalUsed = teamData.players.reduce((sum, p) => sum + (parseInt(p.points) || 0), 0);
+          const totalRemaining = 60000 - teamData.total_points;
+          const maxBid = 60000 - teamData.total_points - (8 - teamData.players.length) * 1000;
+
+          const stats = document.createElement("p");
+          stats.innerHTML = `
+            <strong>Total Used:</strong> ${totalUsed} |
+            <strong>Remaining:</strong> ${totalRemaining} |
+            <strong>Max Bid:</strong> ${maxBid}`;
+          box.appendChild(stats);
+
+          const table = document.createElement("table");
+          table.innerHTML = `
+            <tr>
+              <th>#</th>
+              <th>Player Name</th>
+              <th>Category</th>
+              <th>Points</th>
+            </tr>
+          `;
+
+          teamData.players.forEach((p, idx) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${idx + 1}</td>
+              <td>${p.player_name}</td>
+              <td>${p.category}</td>
+              <td>${p.points}</td>
+            `;
+            table.appendChild(row);
+          });
+
+          box.appendChild(table);
+          container.appendChild(box);
+        });
+      })
+      .catch((err) => {
+        console.error("Failed to fetch team data:", err);
+      });
+  </script>
+</body>
+</html>
