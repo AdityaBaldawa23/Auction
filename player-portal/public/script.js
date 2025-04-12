@@ -173,6 +173,7 @@ function renderPlayerCard(player) {
 
   const unsoldBtn = document.createElement("button");
   unsoldBtn.textContent = "Unsold";
+  unsoldBtn.classList.add('unsoldBtn');
   unsoldBtn.onclick = () => {
     console.log("➡️ UNSOLD clicked for:", player.player_name);
     console.trace();
