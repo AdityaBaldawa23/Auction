@@ -1,11 +1,25 @@
 {
   "TeamA": {
-    "players": [],
-    "total_points": 0
+    "players": [
+      {
+        "player_name": "Manju",
+        "category": "D",
+        "points": 5000,
+        "max_bid": 55000
+      }
+    ],
+    "total_points": 5000
   },
   "TeamB": {
-    "players": [],
-    "total_points": 0
+    "players": [
+      {
+        "player_name": "Neil",
+        "category": "B",
+        "points": 5000,
+        "max_bid": 55000
+      }
+    ],
+    "total_points": 5000
   },
   "TeamC": {
     "players": [],

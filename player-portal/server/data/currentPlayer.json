@@ -1,12 +1,12 @@
 {
-  "player_id": 1,
-  "player_name": "Adi",
-  "category": "A",
+  "player_id": 10,
+  "player_name": "Ritu",
+  "category": "B",
   "previous_team": "CSK",
-  "age": 20,
+  "age": 16,
   "current_points": 200,
   "previous_points": 500,
   "current_status": "unsold",
   "achievements": "N/A",
-  "photo": "images/download.jpg"
+  "photo": "N/A"
 }

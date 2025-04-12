@@ -12,7 +12,7 @@ if (savedPlayers) {
   shuffledPlayers = JSON.parse(savedPlayers);
   showNextPlayer();
 } else {
-  fetch("http://localhost:5000/api/players")
+  fetch("https://auction-ve9y.onrender.com/api/players")
     .then((res) => res.json())
     .then((players) => {
       players = players.flat();
@@ -127,7 +127,7 @@ function renderPlayerCard(player) {
 
   console.log("Current player being shown:", player);
   // 🔥 Send current player to server so it can be shown in team.html
-  fetch("http://localhost:5000/api/set-current-player", {
+  fetch("https://auction-ve9y.onrender.com/api/set-current-player", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -230,7 +230,7 @@ function openTeamModal(player) {
       return;
     }
 
-    fetch("http://localhost:5000/api/sellPlayer", {
+    fetch("https://auction-ve9y.onrender.com/api/sellPlayer", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -282,7 +282,7 @@ document.getElementById("confirmSell").onclick = () => {
     return;
   }
 
-  fetch("http://localhost:5000/api/sell-player", {
+  fetch("https://auction-ve9y.onrender.com/api/sell-player", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -325,7 +325,7 @@ document.getElementById("confirmSell").onclick = () => {
 // RESET Button logic
 document.getElementById("resetBtn").onclick = () => {
   if (confirm("⚠️ This will erase all players and team data. Proceed?")) {
-    fetch("http://localhost:5000/api/reset", { method: "POST" })
+    fetch("https://auction-ve9y.onrender.com/api/reset", { method: "POST" })
       .then((res) => {
         if (!res.ok) throw new Error("Reset failed");
         alert("✅ All data has been reset.");

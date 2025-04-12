@@ -109,7 +109,7 @@
 
   <script>
     // Fetch current player being auctioned
-    fetch("http://localhost:5000/api/current-player")
+    fetch("https://auction-ve9y.onrender.com/api/current-player")
       .then(res => res.json())
       .then(player => {
         document.getElementById("playerName").textContent = player.player_name;
@@ -126,7 +126,7 @@
       });
 
     // Fetch team overview
-    fetch("http://localhost:5000/api/teams")
+    fetch("https://auction-ve9y.onrender.com/api/teams")
       .then((res) => res.json())
       .then((data) => {
         const container = document.getElementById("teamsContainer");
