@@ -36,65 +36,67 @@
 
     /* Current Player Section */
     #currentPlayerSection {
-      background: #161b22;
+      background: #0d1117;
       padding: 40px;
-      border-radius: 16px;
-      margin-bottom: 50px;
-      box-shadow: 0 6px 24px rgba(90, 90, 90, 0.15);
-      transition: all 0.3s ease;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      margin-bottom: 60px;
+      transition: 0.3s all ease-in-out;
+    }
+
+    #currentPlayerSection h2 {
+      color: #58a6ff;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+      letter-spacing: 1px;
     }
 
     #currentPlayerContent {
       display: flex;
+      flex-direction: row;
+      gap: 40px;
+      align-items: flex-start;
+      justify-content: center;
       flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
     }
 
     #currentPlayerSection img {
-      flex: 1 1 70%;
-      max-width: 70%;
+      width: 350px;
+      max-width: 100%;
       height: auto;
       border-radius: 16px;
+      box-shadow: 0 6px 30px rgba(88, 166, 255, 0.15);
+      border: 2px solid #30363d;
       object-fit: cover;
-      border: 3px solid #30363d;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-      transition: transform 0.3s;
+      transition: transform 0.3s ease-in-out;
     }
 
     #currentPlayerSection img:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
 
     #currentPlayerDetails {
-      flex: 1 1 28%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background-color: #0d1117;
-      padding: 20px;
-      border-radius: 12px;
+      flex: 1;
+      min-width: 280px;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid #30363d;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     }
 
     #currentPlayerDetails p {
-      margin: 10px 0;
-      font-size: 1.1em;
       color: #c9d1d9;
+      font-size: 1.1rem;
       line-height: 1.6;
+      margin-bottom: 12px;
     }
 
     #currentPlayerDetails strong {
       color: #58a6ff;
-    }
-
-    #currentPlayerSection h2 {
-      margin-bottom: 30px;
-      color: #79c0ff;
-      font-size: 2em;
-      text-align: center;
+      font-weight: 600;
     }
 
 
