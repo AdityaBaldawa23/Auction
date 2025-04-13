@@ -152,6 +152,42 @@ app.get("/api/current-player", (req, res) => {
     }
   });
 });
+app.get("/api/unsold-players", async (req, res) => {
+  try {
+    const allPlayers = await getAllPlayers();
+
+    const teamRawData = fs.readFileSync(teamDataPath);
+    const teamData = JSON.parse(teamRawData);
+
+    // Flatten all sold player names
+    const soldPlayersSet = new Set();
+    Object.values(teamData).forEach(team => {
+      team.players.forEach(player => {
+        soldPlayersSet.add(player.player_name);
+      });
+    });
+
+    // Filter unsold players
+    const unsoldPlayers = allPlayers.filter(
+      (player) => !soldPlayersSet.has(player.player_name)
+    );
+
+    // Group by category
+    const grouped = { A: [], B: [], C: [], D: [] };
+    unsoldPlayers.forEach(player => {
+      const cat = player.category;
+      if (grouped[cat]) {
+        grouped[cat].push(player);
+      }
+    });
+
+    res.status(200).json(grouped);
+  } catch (err) {
+    console.error("❌ Failed to get unsold players:", err);
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+});
+
 
 // ✅ Start server
 app.listen(PORT, () => {

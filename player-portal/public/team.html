@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Team Overview</title>
   <style>
     body {
@@ -121,7 +122,8 @@
       color: #c9d1d9;
     }
 
-    th, td {
+    th,
+    td {
       border: 1px solid #30363d;
       padding: 10px;
       text-align: left;
@@ -197,6 +199,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="logo"><img src="./images/Mb_Auction1[1].jpg" alt="Logo" /></div>
   <h1>Team Player Overview</h1>
@@ -219,6 +222,13 @@
 
   <!-- Teams Overview -->
   <div id="teamsContainer"></div>
+
+  <!-- Unsold Players Section -->
+  <div id="unsoldPlayersSection" style="margin-top: 60px;">
+    <h2 style="text-align:center; color:#58a6ff; font-size:2em; margin-bottom: 20px;">⏳ Unsold Players by Category</h2>
+    <div id="unsoldContainer"></div>
+  </div>
+
 
   <script>
     // Fetch current player being auctioned
@@ -291,6 +301,64 @@
       .catch((err) => {
         console.error("Failed to fetch team data:", err);
       });
+
+       // 🔁 Fetch unsold players grouped by category
+  fetch("https://auction-ve9y.onrender.com/api/unsold-players")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("unsoldContainer");
+
+      ["A", "B", "C", "D"].forEach(category => {
+        const categoryPlayers = data[category] || [];
+
+        const section = document.createElement("div");
+        section.style.marginBottom = "40px";
+
+        const title = document.createElement("h3");
+        title.textContent = `Category ${category}`;
+        title.style.color = "#ffa657";
+        title.style.fontSize = "1.5em";
+        title.style.marginBottom = "15px";
+        container.appendChild(title);
+        container.appendChild(section);
+
+        if (categoryPlayers.length === 0) {
+          const empty = document.createElement("p");
+          empty.textContent = "No players left in this category.";
+          empty.style.color = "#8b949e";
+          section.appendChild(empty);
+        } else {
+          const grid = document.createElement("div");
+          grid.style.display = "grid";
+          grid.style.gridTemplateColumns = "repeat(auto-fit, minmax(260px, 1fr))";
+          grid.style.gap = "20px";
+
+          categoryPlayers.forEach(player => {
+            const card = document.createElement("div");
+            card.style.background = "#161b22";
+            card.style.padding = "15px";
+            card.style.borderRadius = "10px";
+            card.style.boxShadow = "0 4px 10px rgba(90,90,90,0.08)";
+
+            card.innerHTML = `
+              <h4 style="color:#58a6ff;">${player.player_name}</h4>
+              <p><strong>Age:</strong> ${player.age}</p>
+              <p><strong>Prev. Team:</strong> ${player.previous_team}</p>
+              <p><strong>Status:</strong> ${player.current_status}</p>
+              <p><strong>Achievements:</strong> ${player.achievements}</p>
+            `;
+
+            grid.appendChild(card);
+          });
+
+          section.appendChild(grid);
+        }
+      });
+    })
+    .catch(err => {
+      console.error("Failed to fetch unsold players:", err);
+    });
   </script>
 </body>
+
 </html>
