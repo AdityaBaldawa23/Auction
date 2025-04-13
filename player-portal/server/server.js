@@ -188,6 +188,57 @@ app.get("/api/unsold-players", async (req, res) => {
   }
 });
 
+app.post("/api/revert-last-sold", (req, res) => {
+  const players = JSON.parse(fs.readFileSync("./data/playerData.json"));
+  const teamData = JSON.parse(fs.readFileSync("./data/teamData.json"));
+  let currentPlayer = JSON.parse(fs.readFileSync("./data/currentPlayer.json"));
+
+  const lastSoldPlayerIndex = [...players]
+    .reverse()
+    .findIndex((p) => p.current_status === "Sold");
+
+  if (lastSoldPlayerIndex === -1) {
+    return res.json({ success: false, message: "No sold player to revert!" });
+  }
+
+  const index = players.length - 1 - lastSoldPlayerIndex;
+  const lastSoldPlayer = players[index];
+
+  const team = lastSoldPlayer.sold_to;
+  const soldPoints = parseInt(lastSoldPlayer.sold_points);
+
+  // Refund points and remove player
+  teamData[team].players = teamData[team].players.filter(
+    (id) => id !== lastSoldPlayer.player_id
+  );
+  teamData[team].current_points += soldPoints;
+
+  const playersBought = teamData[team].players.length;
+  const playersRemaining = teamData[team].total_players - playersBought;
+  teamData[team].max_bid = playersRemaining > 0
+    ? teamData[team].current_points - (playersRemaining - 1)
+    : 0;
+
+  // Revert player status
+  lastSoldPlayer.current_status = "unsold";
+  delete lastSoldPlayer.sold_to;
+  delete lastSoldPlayer.sold_points;
+
+  // Update current player to show again
+  fs.writeFileSync(
+    "./data/currentPlayer.json",
+    JSON.stringify(lastSoldPlayer, null, 2)
+  );
+
+  players[index] = lastSoldPlayer;
+
+  fs.writeFileSync("./data/playerData.json", JSON.stringify(players, null, 2));
+  fs.writeFileSync("./data/teamData.json", JSON.stringify(teamData, null, 2));
+
+  res.json({ success: true, player: lastSoldPlayer });
+});
+
+
 
 // ✅ Start server
 app.listen(PORT, () => {

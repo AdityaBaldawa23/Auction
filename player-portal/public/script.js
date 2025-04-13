@@ -3,6 +3,7 @@ let currentIndex = 0;
 let reAuctionList = [];
 let isReAuction = false;
 let reAuctionIndex = 0;
+let lastSoldInfo = null; 
 
 let rendering = false;
 
@@ -274,6 +275,8 @@ document.getElementById("cancelSell").onclick = () => {
   document.getElementById("sellModal").style.display = "none";
 };
 
+document.getElementById("editLastSoldBtn").style.display = "none";
+
 document.getElementById("confirmSell").onclick = () => {
   const team = document.getElementById("teamSelect").value;
   const soldPoints = parseInt(document.getElementById("soldPoints").value);
@@ -321,6 +324,12 @@ document.getElementById("confirmSell").onclick = () => {
       console.error("❌ Error:", err.message);
       alert(`Something went wrong: ${err.message}`);
     });
+    lastSoldInfo = {
+      player: selectedPlayer,
+      teamName: team,
+      soldPoints: soldPoints,
+    };
+    document.getElementById("editLastSoldBtn").style.display = "inline-block";
 };
 
 // RESET Button logic
@@ -340,43 +349,19 @@ document.getElementById("resetBtn").onclick = () => {
   }
 };
 
-// UPLOAD JSON logic
-// document.getElementById("uploadBtn").onclick = () => {
-//   const fileInput = document.getElementById("uploadInput");
-//   const file = fileInput.files[0];
+document.getElementById("editLastSoldBtn").onclick = () => {
+  if (!lastSoldInfo) {
+    alert("❌ No recent player to edit.");
+    return;
+  }
 
-//   if (!file) {
-//     alert("Please choose a .json file to upload.");
-//     return;
-//   }
+  selectedPlayer = lastSoldInfo.player;
+  document.getElementById("sellModal").style.display = "block";
 
-//   const reader = new FileReader();
-//   reader.onload = () => {
-//     try {
-//       const jsonData = JSON.parse(reader.result);
+  document.getElementById("teamSelect").value = lastSoldInfo.teamName;
+  document.getElementById("soldPoints").value = lastSoldInfo.soldPoints;
+};
 
-//       fetch("http://localhost:5000/api/upload", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify(jsonData),
-//       })
-//         .then((res) => {
-//           if (!res.ok) throw new Error("Upload failed");
-//           alert("✅ New player/team data uploaded successfully!");
-//           localStorage.clear(); // Clear local saved player queue
-//           location.reload();
-//         })
-//         .catch((err) => {
-//           console.error("❌ Upload failed:", err);
-//           alert("❌ Upload failed. Check console.");
-//         });
-//     } catch (e) {
-//       alert("Invalid JSON format.");
-//     }
-//   };
-
-//   reader.readAsText(file);
-// };
 
 document.getElementById("sellModal").style.display = "none";
 document.getElementById("teamSelect").value = "";
