@@ -293,13 +293,12 @@ document.getElementById("confirmSell").onclick = () => {
     },
     body: JSON.stringify({
       player: selectedPlayer,
-      teamName: newTeam,                  // the updated team
+      teamName: team,
       soldPoints: soldPoints,
       isEdit: selectedPlayer?.player_id === lastSoldInfo?.player?.player_id,
-      previousTeam: lastSoldInfo?.teamName, // pass previous team to remove from
+      previousTeam: lastSoldInfo?.teamName 
     }),
-  });
-  
+  })
     .then((res) => {
       if (!res.ok)
         return res.json().then((err) => {
