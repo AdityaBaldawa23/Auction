@@ -51,7 +51,7 @@ app.get("/api/players", async (req, res) => {
 // ✅ Sell player endpoint
 app.post("/api/sell-player", (req, res) => {
   try {
-    const { player, teamName, soldPoints } = req.body;
+    const { player, teamName, soldPoints, isEdit } = req.body;
 
     const rawData = fs.readFileSync(teamDataPath);
     const teamData = JSON.parse(rawData);
@@ -61,35 +61,55 @@ app.post("/api/sell-player", (req, res) => {
     }
 
     const team = teamData[teamName];
-    const playerCount = team.players.length;
+    const playerIndex = team.players.findIndex(
+      (p) => p.player_id === player.player_id
+    );
 
-    if (playerCount >= 8) {
-      return res.status(400).json({ message: "⚠️ Team already has 8 players." });
+    if (isEdit && playerIndex !== -1) {
+      const prevPoints = team.players[playerIndex].points;
+
+      // Update the existing player record
+      team.players[playerIndex] = {
+        player_id: player.player_id,
+        player_name: player.player_name,
+        category: player.category,
+        points: soldPoints,
+        max_bid: (60000 - (team.total_points - prevPoints + soldPoints)) / (8 - team.players.length),
+      };
+
+      team.total_points = team.total_points - prevPoints + soldPoints;
+    } else {
+      if (team.players.length >= 8) {
+        return res.status(400).json({ message: "⚠️ Team already has 8 players." });
+      }
+
+      const remainingPoints = 60000 - team.total_points;
+
+      if (soldPoints > remainingPoints) {
+        return res.status(400).json({ message: `⚠️ Not enough points. Max allowed: ${remainingPoints}` });
+      }
+
+      // Add a new player
+      team.players.push({
+        player_id: player.player_id,
+        player_name: player.player_name,
+        category: player.category,
+        points: soldPoints,
+        max_bid: remainingPoints - soldPoints,
+      });
+
+      team.total_points += soldPoints;
     }
-
-    const remainingPoints = 60000 - team.total_points;
-
-    if (soldPoints > remainingPoints) {
-      return res.status(400).json({ message: `⚠️ Not enough points. Max allowed: ${remainingPoints}` });
-    }
-
-    team.players.push({
-      player_name: player.player_name,
-      category: player.category,
-      points: soldPoints,
-      max_bid: remainingPoints - soldPoints,
-    });
-
-    team.total_points += soldPoints;
 
     fs.writeFileSync(teamDataPath, JSON.stringify(teamData, null, 2));
 
-    res.status(200).json({ message: "✅ Player sold and JSON updated." });
+    res.status(200).json({ message: isEdit ? "✏️ Player entry edited." : "✅ Player sold and JSON updated." });
   } catch (err) {
     console.error("❌ Error:", err);
     res.status(500).json({ message: "Server error", error: err.message });
   }
 });
+
 
 // ✅ Set current player
 app.post("/api/set-current-player", (req, res) => {

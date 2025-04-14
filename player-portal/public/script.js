@@ -295,6 +295,7 @@ document.getElementById("confirmSell").onclick = () => {
       player: selectedPlayer,
       teamName: team,
       soldPoints: soldPoints,
+      isEdit: selectedPlayer?.player_id === lastSoldInfo?.player?.player_id 
     }),
   })
     .then((res) => {
