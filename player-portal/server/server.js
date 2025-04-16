@@ -87,8 +87,8 @@ app.post("/api/sell-player", (req, res) => {
       };
       team.total_points = team.total_points - prevPoints + soldPoints;
     } else {
-      if (team.players.length >= 8) {
-        return res.status(400).json({ message: "⚠️ Team already has 8 players." });
+      if (!isEdit && team.players.length >= 11) {
+        return res.status(400).json({ message: "⚠️ Team already has 11 players." });
       }
 
       const remainingPoints = 60000 - team.total_points;

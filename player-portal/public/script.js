@@ -360,6 +360,7 @@ document.getElementById("editLastSoldBtn").onclick = () => {
   selectedPlayer = lastSoldInfo.player;
   document.getElementById("sellModal").style.display = "block";
 
+  // Prefill the modal with previous data
   document.getElementById("teamSelect").value = lastSoldInfo.teamName;
   document.getElementById("soldPoints").value = lastSoldInfo.soldPoints;
 };

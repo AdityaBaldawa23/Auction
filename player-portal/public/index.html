@@ -9,17 +9,20 @@
 </head>
 
 <body>
-  <div class="logo"><img src="./images/Mb_Auction1[1].jpg" style="height: 200px;"></div>
+  <div class="logo">
+    <img src="./images/Mb_Auction1[1].jpg" style="height: 200px;" />
+  </div>
 
   <h1 class="title">Player Up For Auction</h1>
   <div id="playerContainer" class="player-box-layout"></div>
 
   <button id="editLastSoldBtn">✏️ Edit Last Sold Player</button>
-  <button id="startReauctionBtn" style="display:none;">Start Re-Auction</button>
+  <button id="startReauctionBtn" style="display: none;">Start Re-Auction</button>
 
-  <div id="sellModal" class="modal" style="display:none;">
+  <!-- 🟢 Sell Player Modal -->
+  <div id="sellModal" class="modal" style="display: none;">
     <div class="modal-content">
-      <span id="closeModal" class="close">&times;</span>
+      <span id="closeSellModal" class="close">&times;</span>
       <h2>Sell Player</h2>
       <label for="teamSelect">Select Team:</label>
       <select id="teamSelect">
@@ -34,6 +37,27 @@
 
       <button id="confirmSell">Confirm</button>
       <button id="cancelSell">Cancel</button>
+    </div>
+  </div>
+
+  <!-- 🟡 Edit Last Sold Player Modal -->
+  <div id="editModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span id="closeEditModal" class="close">&times;</span>
+      <h2>Edit Last Sold Player</h2>
+      <label for="editTeamSelect">New Team:</label>
+      <select id="editTeamSelect">
+        <option value="TeamA">TeamA</option>
+        <option value="TeamB">TeamB</option>
+        <option value="TeamC">TeamC</option>
+        <option value="TeamD">TeamD</option>
+      </select>
+
+      <label for="editSoldPoints">New Points:</label>
+      <input type="number" id="editSoldPoints" />
+
+      <button id="confirmEdit">Confirm Edit</button>
+      <button id="cancelEdit">Cancel</button>
     </div>
   </div>
 
