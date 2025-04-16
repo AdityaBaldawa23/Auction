@@ -267,7 +267,7 @@ function openSellModal(player) {
   document.getElementById("sellModal").style.display = "block";
 }
 
-document.getElementById("closeModal").onclick = () => {
+document.getElementById("closeSellModal").onclick = () => {
   document.getElementById("sellModal").style.display = "none";
 };
 
@@ -358,12 +358,57 @@ document.getElementById("editLastSoldBtn").onclick = () => {
   }
 
   selectedPlayer = lastSoldInfo.player;
-  document.getElementById("sellModal").style.display = "block";
+  document.getElementById("editModal").style.display = "block";
 
   // Prefill the modal with previous data
-  document.getElementById("teamSelect").value = lastSoldInfo.teamName;
-  document.getElementById("soldPoints").value = lastSoldInfo.soldPoints;
+  document.getElementById("editTeamSelect").value = lastSoldInfo.teamName;
+  document.getElementById("editSoldPoints").value = lastSoldInfo.soldPoints;
 };
+
+document.getElementById("confirmEdit").onclick = () => {
+  const newTeam = document.getElementById("editTeamSelect").value;
+  const newPoints = parseInt(document.getElementById("editSoldPoints").value);
+
+  if (!newTeam || isNaN(newPoints)) {
+    alert("❌ Please enter valid values.");
+    return;
+  }
+
+  fetch("https://auction-ve9y.onrender.com/api/sell-player", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      player: selectedPlayer,
+      teamName: newTeam,
+      soldPoints: newPoints,
+      isEdit: true,
+      previousTeam: lastSoldInfo?.teamName,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      lastSoldInfo = {
+        player: selectedPlayer,
+        teamName: newTeam,
+        soldPoints: newPoints,
+      };
+      alert("✅ Player info updated successfully!");
+      document.getElementById("editModal").style.display = "none";
+    })
+    .catch((err) => {
+      console.error("❌ Failed to edit:", err);
+      alert("❌ Failed to update player.");
+    });
+};
+
+document.getElementById("cancelEdit").onclick = () => {
+  document.getElementById("editModal").style.display = "none";
+};
+
+document.getElementById("closeEditModal").onclick = () => {
+  document.getElementById("editModal").style.display = "none";
+};
+
 
 
 document.getElementById("sellModal").style.display = "none";
