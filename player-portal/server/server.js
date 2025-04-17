@@ -61,9 +61,16 @@ app.post("/api/sell-player", (req, res) => {
     }
 
     // If editing, remove the player from the previous team
-    if (isEdit && previousTeam && previousTeam !== teamName && teamData[previousTeam]) {
+    if (
+      isEdit &&
+      previousTeam &&
+      previousTeam !== teamName &&
+      teamData[previousTeam]
+    ) {
       const prevTeam = teamData[previousTeam];
-      const prevIndex = prevTeam.players.findIndex(p => p.player_id === player.player_id);
+      const prevIndex = prevTeam.players.findIndex(
+        (p) => p.player_id === player.player_id
+      );
 
       if (prevIndex !== -1) {
         const prevPoints = prevTeam.players[prevIndex].points;
@@ -73,7 +80,9 @@ app.post("/api/sell-player", (req, res) => {
     }
 
     const team = teamData[teamName];
-    const playerIndex = team.players.findIndex(p => p.player_id === player.player_id);
+    const playerIndex = team.players.findIndex(
+      (p) => p.player_id === player.player_id
+    );
 
     if (playerIndex !== -1) {
       // If player already exists in this team (re-edit within same team)
@@ -88,13 +97,29 @@ app.post("/api/sell-player", (req, res) => {
       team.total_points = team.total_points - prevPoints + soldPoints;
     } else {
       if (!isEdit && team.players.length >= 11) {
-        return res.status(400).json({ message: "⚠️ Team already has 11 players." });
+        return res
+          .status(400)
+          .json({ message: "⚠️ Team already has 11 players." });
       }
 
       const remainingPoints = 60000 - team.total_points;
       if (soldPoints > remainingPoints) {
-        return res.status(400).json({ message: `⚠️ Not enough points. Max allowed: ${remainingPoints}` });
+        return res
+          .status(400)
+          .json({
+            message: `⚠️ Not enough points. Max allowed: ${remainingPoints}`,
+          });
       }
+
+      const basePointsPerPlayer = 1000;
+      const maxPlayers = 11;
+      const playersRemaining = maxPlayers - team.players.length - 1; // -1 because we’re adding 1 now
+
+      const remainingAfterThisPurchase = 60000 - team.total_points - soldPoints;
+      const maxBid = Math.max(
+        remainingAfterThisPurchase - playersRemaining * basePointsPerPlayer,
+        0
+      );
 
       // Add player to new team
       team.players.push({
@@ -102,7 +127,7 @@ app.post("/api/sell-player", (req, res) => {
         player_name: player.player_name,
         category: player.category,
         points: soldPoints,
-        max_bid: remainingPoints - soldPoints,
+        max_bid: maxBid,
       });
 
       team.total_points += soldPoints;
@@ -115,7 +140,6 @@ app.post("/api/sell-player", (req, res) => {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 });
-
 
 // ✅ Set current player
 app.post("/api/set-current-player", (req, res) => {
@@ -137,7 +161,9 @@ app.get("/api/teams", (req, res) => {
     const teamData = JSON.parse(rawData);
     res.status(200).json(teamData);
   } catch (err) {
-    res.status(500).json({ message: "Failed to read teams", error: err.message });
+    res
+      .status(500)
+      .json({ message: "Failed to read teams", error: err.message });
   }
 });
 
@@ -174,7 +200,9 @@ app.get("/api/current-player", (req, res) => {
       res.json(player);
     } catch (parseErr) {
       console.error("❌ JSON parse error in currentPlayer.json:", parseErr);
-      res.status(500).json({ error: "Invalid JSON format in currentPlayer.json" });
+      res
+        .status(500)
+        .json({ error: "Invalid JSON format in currentPlayer.json" });
     }
   });
 });
@@ -187,8 +215,8 @@ app.get("/api/unsold-players", async (req, res) => {
 
     // Flatten all sold player names
     const soldPlayersSet = new Set();
-    Object.values(teamData).forEach(team => {
-      team.players.forEach(player => {
+    Object.values(teamData).forEach((team) => {
+      team.players.forEach((player) => {
         soldPlayersSet.add(player.player_name);
       });
     });
@@ -200,7 +228,7 @@ app.get("/api/unsold-players", async (req, res) => {
 
     // Group by category
     const grouped = { A: [], B: [], C: [], D: [] };
-    unsoldPlayers.forEach(player => {
+    unsoldPlayers.forEach((player) => {
       const cat = player.category;
       if (grouped[cat]) {
         grouped[cat].push(player);
@@ -241,9 +269,10 @@ app.post("/api/revert-last-sold", (req, res) => {
 
   const playersBought = teamData[team].players.length;
   const playersRemaining = teamData[team].total_players - playersBought;
-  teamData[team].max_bid = playersRemaining > 0
-    ? teamData[team].current_points - (playersRemaining - 1)
-    : 0;
+  teamData[team].max_bid =
+    playersRemaining > 0
+      ? teamData[team].current_points - (playersRemaining - 1)
+      : 0;
 
   // Revert player status
   lastSoldPlayer.current_status = "unsold";
@@ -263,8 +292,6 @@ app.post("/api/revert-last-sold", (req, res) => {
 
   res.json({ success: true, player: lastSoldPlayer });
 });
-
-
 
 // ✅ Start server
 app.listen(PORT, () => {

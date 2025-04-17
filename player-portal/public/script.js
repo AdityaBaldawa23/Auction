@@ -4,7 +4,6 @@ let reAuctionList = [];
 let isReAuction = false;
 let reAuctionIndex = 0;
 let lastSoldInfo = null; 
-
 let rendering = false;
 
 // Check saved progress
@@ -18,16 +17,21 @@ if (savedPlayers) {
     .then((players) => {
       players = players.flat();
 
-      // Step 1: Categorize
+      // Step 1: Categorize based on new categories
       const categories = {
-        A: [],
-        B: [],
-        C: [],
-        D: [],
+        "A+": [],
+        "A": [],
+        "35+": [],
+        "45+": [],
+        "Female": [],
       };
 
       players.forEach((p) => {
-        if (categories[p.category]) categories[p.category].push(p);
+        if (p.category === "A+") categories["A+"].push(p);
+        else if (p.category === "A") categories["A"].push(p);
+        else if (p.category === "35+") categories["35+"].push(p);
+        else if (p.category === "45+") categories["45+"].push(p);
+        else if (p.gender === "Female") categories["Female"].push(p);
       });
 
       // Step 2: Shuffle each category
@@ -36,15 +40,16 @@ if (savedPlayers) {
       }
 
       // Step 3: Define pattern and pointer
-      const sequencePattern = ["A", "B", "B", "C", "D"];
+      const sequencePattern = ["A+", "A", "35+", "45+", "Female"];
       let patternIndex = 0;
 
       // Step 4: Build shuffledPlayers based on pattern
       while (
-        categories.A.length ||
-        categories.B.length ||
-        categories.C.length ||
-        categories.D.length
+        categories["A+"].length ||
+        categories["A"].length ||
+        categories["35+"].length ||
+        categories["45+"].length ||
+        categories["Female"].length
       ) {
         const currentCategory =
           sequencePattern[patternIndex % sequencePattern.length];
@@ -389,7 +394,7 @@ document.getElementById("confirmEdit").onclick = () => {
     .then((data) => {
       lastSoldInfo = {
         player: selectedPlayer,
-        teamName: newTeam,
+        teamName: newTeam,  
         soldPoints: newPoints,
       };
       alert("✅ Player info updated successfully!");
