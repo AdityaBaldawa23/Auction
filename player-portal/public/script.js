@@ -155,13 +155,12 @@ function renderPlayerCard(player) {
   details.className = "player-details";
 
   const boxes = [
-    `Name: ${player.player_name}`,
-    `Category: ${player.category}`,
-    `Team: ${player.previous_team}`,
-    `Age: ${player.age}`,
-    `Points: ${player.current_points}`,
-    `Status: ${player.current_status}`,
-    `Achievements: ${player.achievements}`,
+    `Name:\t ${player.player_name}`,
+    `Category:\t ${player.category}`,
+    `District:\t ${player.previous_team}`,
+    `Age:\t ${player.age}`,
+    `Status:\t ${player.current_status}`,
+    `Achievements:\t ${player.achievements}`,
   ];
 
   boxes.forEach((text) => {

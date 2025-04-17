@@ -225,9 +225,8 @@
       <div id="currentPlayerDetails">
         <p><strong>Name:</strong> <span id="playerName"></span></p>
         <p><strong>Age:</strong> <span id="playerAge"></span></p>
-        <p><strong>Previous Team:</strong> <span id="playerTeam"></span></p>
+        <p><strong>District:</strong> <span id="playerTeam"></span></p>
         <p><strong>Category:</strong> <span id="playerCategory"></span></p>
-        <p><strong>Previous Points:</strong> <span id="playerPreviousPoints"></span></p>
         <p><strong>Achievements:</strong> <span id="playerAchievements"></span></p>
       </div>
     </div>
@@ -252,9 +251,7 @@
         document.getElementById("playerAge").textContent = player.age;
         document.getElementById("playerTeam").textContent = player.previous_team;
         document.getElementById("playerCategory").textContent = player.category;
-        document.getElementById("playerPreviousPoints").textContent = player.previous_points;
         document.getElementById("playerAchievements").textContent = player.achievements;
-        document.getElementById("playerPhoto").src = player.photo !== "N/A" ? player.photo : "https://via.placeholder.com/220";
         document.getElementById("playerPhoto").src = player.photo !== "N/A" ? player.photo : "https://via.placeholder.com/220";
       })
       .catch(err => {
@@ -322,7 +319,7 @@
       .then(data => {
         const container = document.getElementById("unsoldContainer");
 
-        ["A", "B", "C", "D"].forEach(category => {
+        ["A+", "A", "35+", "45+", "Female"].forEach(category => {
           const categoryPlayers = data[category] || [];
 
           const section = document.createElement("div");
