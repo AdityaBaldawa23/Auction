@@ -170,10 +170,14 @@ app.get("/api/teams", (req, res) => {
 // ✅ Reset all teams
 app.post("/api/reset", (req, res) => {
   const defaultData = {
-    TeamA: { players: [], total_points: 0 },
-    TeamB: { players: [], total_points: 0 },
-    TeamC: { players: [], total_points: 0 },
-    TeamD: { players: [], total_points: 0 },
+    "Net Dominators": { players: [], total_points: 0 },
+    "Spartans": { players: [], total_points: 0 },
+    "RJBA Dominators": { players: [], total_points: 0 },
+    "Shriram Smashers": { players: [], total_points: 0 },
+    "Kolhapur Raptors": { players: [], total_points: 0 },
+    "KBC Shuttlers": { players: [], total_points: 0 },
+    "Rucks Royal": { players: [], total_points: 0 },
+    "Eagle Warriors": { players: [], total_points: 0 }
   };
 
   fs.writeFile(teamDataPath, JSON.stringify(defaultData, null, 2), (err) => {
