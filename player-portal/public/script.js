@@ -3,7 +3,7 @@ let currentIndex = 0;
 let reAuctionList = [];
 let isReAuction = false;
 let reAuctionIndex = 0;
-let lastSoldInfo = null; 
+let lastSoldInfo = null;
 let rendering = false;
 
 // Check saved progress
@@ -20,10 +20,10 @@ if (savedPlayers) {
       // Step 1: Categorize based on new categories
       const categories = {
         "A+": [],
-        "Open": [],
+        Open: [],
         "35+": [],
         "45+": [],
-        "Female": [],
+        Female: [],
       };
 
       players.forEach((p) => {
@@ -65,44 +65,48 @@ if (savedPlayers) {
     });
 }
 
-
 function showNextPlayer() {
-  if (rendering) return; // ✅ Moved to top
+  if (rendering) return;
   rendering = true;
 
-  console.log("🔁 showNextPlayer() called");
   const container = document.getElementById("playerContainer");
   container.innerHTML = "";
 
   let player;
 
   if (!isReAuction) {
-    console.log("🔁 Starting re-auction with players:", reAuctionList);
     if (currentIndex >= shuffledPlayers.length) {
       if (reAuctionList.length > 0) {
         container.innerHTML = `<h2 style="color: orange;">🔁 Normal auction complete.</h2><p>Click the button or press Enter to begin Re-Auction Round.</p>`;
         document.getElementById("startReauctionBtn").style.display = "inline-block";
         document.addEventListener("keydown", handleReauctionKey);
-        rendering = false; // ✅ Reset here before return
+        rendering = false;
         return;
       } else {
         container.innerHTML = `<h2 style="color: green;">✅ Auction Completed! No players for re-auction.</h2>`;
-        rendering = false; // ✅ Reset here before return
+        rendering = false;
         return;
       }
     }
 
     player = shuffledPlayers[currentIndex++];
   } else {
-    if (reAuctionIndex >= reAuctionList.length) {
-      container.innerHTML = `<h2 style="color: green;">✅ Re-Auction Completed! All players processed.</h2>`;
-      rendering = false; // ✅ Reset here before return
+    // 🔁 Manual cycle re-auction
+    if (reAuctionList.length === 0) {
+      container.innerHTML = `<h2 style="color: green;">✅ Re-Auction Completed! All players sold.</h2>`;
+      rendering = false;
       return;
     }
-    while(reAuctionList.length > 4)
-    {
-      player = reAuctionList[reAuctionIndex++];
+
+    if (reAuctionIndex >= reAuctionList.length) {
+      // Reached end of current round, restart from beginning
+      reAuctionIndex = 0;
+      container.innerHTML = `<h2 style="color: orange;">🔁 Re-Auction Round complete. Starting again for unsold players...</h2>`;
+      rendering = false;
+      return;
     }
+
+    player = reAuctionList[reAuctionIndex++];
   }
 
   console.log("Calling renderPlayerCard for player:", player);
@@ -181,7 +185,7 @@ function renderPlayerCard(player) {
 
   const unsoldBtn = document.createElement("button");
   unsoldBtn.textContent = "Unsold";
-  unsoldBtn.classList.add('unsoldBtn');
+  unsoldBtn.classList.add("unsoldBtn");
   unsoldBtn.onclick = () => {
     console.log("➡️ UNSOLD clicked for:", player.player_name);
     console.trace();
@@ -303,7 +307,7 @@ document.getElementById("confirmSell").onclick = () => {
       teamName: team,
       soldPoints: soldPoints,
       isEdit: selectedPlayer?.player_id === lastSoldInfo?.player?.player_id,
-      previousTeam: lastSoldInfo?.teamName 
+      previousTeam: lastSoldInfo?.teamName,
     }),
   })
     .then((res) => {
@@ -320,8 +324,10 @@ document.getElementById("confirmSell").onclick = () => {
         shuffledPlayers.splice(currentIndex - 1, 1);
         currentIndex--;
       } else {
-        reAuctionList.splice(reAuctionIndex - 1, 1);
-        reAuctionIndex--;
+        reAuctionList = reAuctionList.filter(
+          (p) => p.player_id !== selectedPlayer.player_id
+        );
+        if (reAuctionIndex > 0) reAuctionIndex--;        
       }
 
       localStorage.setItem("remainingPlayers", JSON.stringify(shuffledPlayers));
@@ -333,12 +339,14 @@ document.getElementById("confirmSell").onclick = () => {
       console.error("❌ Error:", err.message);
       alert(`Something went wrong: ${err.message}`);
     });
-    lastSoldInfo = {
-      player: selectedPlayer,
-      teamName: team,
-      soldPoints: soldPoints,
-    };
-    document.getElementById("editLastSoldBtn").style.display = "inline-block";
+  lastSoldInfo = {
+    player: selectedPlayer,
+    teamName: team,
+    soldPoints: soldPoints,
+  };
+  document.getElementById("editLastSoldBtn").style.display = "inline-block";
+  document.getElementById("editLastSoldBtn").style.margin = "50px";
+  document.getElementById("editLastSoldBtn").style.backgroundColor = "blue";
 };
 
 // RESET Button logic
@@ -396,7 +404,7 @@ document.getElementById("confirmEdit").onclick = () => {
     .then((data) => {
       lastSoldInfo = {
         player: selectedPlayer,
-        teamName: newTeam,  
+        teamName: newTeam,
         soldPoints: newPoints,
       };
       alert("✅ Player info updated successfully!");
@@ -415,8 +423,6 @@ document.getElementById("cancelEdit").onclick = () => {
 document.getElementById("closeEditModal").onclick = () => {
   document.getElementById("editModal").style.display = "none";
 };
-
-
 
 document.getElementById("sellModal").style.display = "none";
 document.getElementById("teamSelect").value = "";
