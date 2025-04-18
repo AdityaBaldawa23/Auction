@@ -7,7 +7,7 @@ const samplePlayers = [
     age: 37,
     current_status: "unsold",
     achievements: "Played Nationals ,state, District & All india",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/1.jpg`,
   },
   {
     player_id: 2,
@@ -17,7 +17,7 @@ const samplePlayers = [
     age: 35,
     current_status: "unsold",
     achievements: "Kolhapur league 2024 , 25 Runner Up",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/2.jpg`,
   },
   {
     player_id: 3,
@@ -28,7 +28,7 @@ const samplePlayers = [
     current_status: "unsold",
     achievements:
       "Maharashtra state Masters championship 2025 Thane -  MS35 : 3rd Place. Maharashtra state Masters selection 2025  CCI - MS35 : Semi finalist.",
-      photo: `images/${player_id}.jpg`,
+      photo: `images/3.jpg`,
   },
   {
     player_id: 4,
@@ -38,7 +38,7 @@ const samplePlayers = [
     age: 35,
     current_status: "unsold",
     achievements: "No",
-        photo: `images/${player_id}.jpg`,
+        photo: `images/4.jpg`,
 
   },
   {
@@ -49,7 +49,7 @@ const samplePlayers = [
     age: 40,
     current_status: "unsold",
     achievements: "Sangli 1st liege tournament...winner",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/5.jpg`,
   },
   {
     player_id: 6,
@@ -59,7 +59,7 @@ const samplePlayers = [
     age: 43,
     current_status: "unsold",
     achievements: "State player",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/6.jpg`,
   },
   {
     player_id: 7,
@@ -69,7 +69,7 @@ const samplePlayers = [
     age: 36,
     current_status: "unsold",
     achievements: "First in Sangli Advocates Bar matches",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/7.jpg`,
   },
   {
     player_id: 8,
@@ -79,7 +79,7 @@ const samplePlayers = [
     age: 39,
     current_status: "unsold",
     achievements: "N/A",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/8.jpg`,
   },
   {
     player_id: 9,
@@ -89,7 +89,7 @@ const samplePlayers = [
     age: 37,
     current_status: "unsold",
     achievements: "Multiple district champion",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/9.jpg`,
   },
   {
     player_id: 10,
@@ -99,7 +99,7 @@ const samplePlayers = [
     age: 35,
     current_status: "unsold",
     achievements: "Pune local turnament winner",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/10.jpg`,
   },
   {
     player_id: 11,
@@ -109,7 +109,7 @@ const samplePlayers = [
     age: 37,
     current_status: "unsold",
     achievements: "District Semifinalist 35+ Doubles Runner Ups",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/11.jpg`,
   },
   {
     player_id: 12,
@@ -119,7 +119,7 @@ const samplePlayers = [
     age: 42,
     current_status: "unsold",
     achievements: "Jain premier League",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/12.jpg`,
   },
   {
     player_id: 13,
@@ -129,7 +129,7 @@ const samplePlayers = [
     age: 38,
     current_status: "unsold",
     achievements: "Kolhapur District Winner for 10 years",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/13.jpg`,
   },
   {
     player_id: 14,
@@ -140,7 +140,7 @@ const samplePlayers = [
     current_status: "unsold",
     achievements:
       "District Singles n Doubles winner,35+ singles bronze medalist at Goa in 2022,40+singles winner at Mumbai in 2024",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/14.jpg`,
   },
   {
     player_id: 15,
@@ -150,7 +150,7 @@ const samplePlayers = [
     age: 35,
     current_status: "unsold",
     achievements: "No",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/15.jpg`,
   },
   {
     player_id: 16,
@@ -161,7 +161,7 @@ const samplePlayers = [
     current_status: "unsold",
     achievements:
       "All India Sr Ranking Tournament, State Tournament participation, NIS cert Badminton coach. Shivaji University and DBATU University coach.",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/16.jpg`,
   },
   {
     player_id: 17,
@@ -171,7 +171,7 @@ const samplePlayers = [
     age: 39,
     current_status: "unsold",
     achievements: "Sangli league 2024 winner Pune open state runner up 24",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/17.jpg`,
   },
   {
     player_id: 18,
@@ -181,7 +181,7 @@ const samplePlayers = [
     age: 0,
     current_status: "unsold",
     achievements: "district winner doubles single all india university",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/18.jpg`,
   },
   {
     player_id: 19,
@@ -192,7 +192,7 @@ const samplePlayers = [
     current_status: "unsold",
     achievements:
       "40+ Winner Sangli district(organised by Digvijay Tarase)\n45+ Winner and 35+ 3rd place (Feb 2025) Ashta badminton tournament\n40+ semi finalist Athani Badminton tournament",
-      photo: `images/${player_id}.jpg`,
+      photo: `images/19.jpg`,
   },
   {
     player_id: 20,
@@ -202,7 +202,7 @@ const samplePlayers = [
     age: 51,
     current_status: "unsold",
     achievements: "No",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/20.jpg`,
   },
   {
     player_id: 21,
@@ -213,7 +213,7 @@ const samplePlayers = [
     current_status: "unsold",
     achievements:
       "Ashta open badminton tournament, 45+ winner.held in Feb 2025.",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/21.jpg`,
   },
   {
     player_id: 22,
@@ -223,7 +223,7 @@ const samplePlayers = [
     age: 50,
     current_status: "unsold",
     achievements: "District 35+ winner in 2023 Satyajit Nana Foundation",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/22.jpg`,
   },
   {
     player_id: 23,
@@ -233,7 +233,7 @@ const samplePlayers = [
     age: 59,
     current_status: "unsold",
     achievements: "No",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/23.jpg`,
   },
   {
     player_id: 24,
@@ -243,7 +243,7 @@ const samplePlayers = [
     age: 46,
     current_status: "unsold",
     achievements: "Singles n doubles State winner in 45+ category",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/24.jpg`,
   },
   {
     player_id: 25,
@@ -253,7 +253,7 @@ const samplePlayers = [
     age: 50,
     current_status: "unsold",
     achievements: "Silver 2025 national masters 50+",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/25.jpg`,
   },
   {
     player_id: 26,
@@ -263,7 +263,7 @@ const samplePlayers = [
     age: 50,
     current_status: "unsold",
     achievements: "Local tournament winner",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/26.jpg`,
   },
   {
     player_id: 27,
@@ -273,7 +273,7 @@ const samplePlayers = [
     age: 46,
     current_status: "unsold",
     achievements: "Pune local tournament winner",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/27.jpg`,
   },
   {
     player_id: 28,
@@ -283,7 +283,7 @@ const samplePlayers = [
     age: 50,
     current_status: "unsold",
     achievements: "2024 State winner 45 single and doubles",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/28.jpg`,
   },
   {
     player_id: 29,
@@ -293,7 +293,7 @@ const samplePlayers = [
     age: 51,
     current_status: "unsold",
     achievements: "Sangli district 45+ winner",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/29.jpg`,
   },
   {
     player_id: 30,
@@ -303,7 +303,7 @@ const samplePlayers = [
     previous_team: "Satara",
     current_status: "unsold",
     achievements: "University all India University krida mohotsav",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/30.jpg`,
   },
   {
     player_id: 31,
@@ -313,7 +313,7 @@ const samplePlayers = [
     previous_team: "Pune",
     current_status: "unsold",
     achievements: "Yonex-Sunrise Momentum Cup (Mixs Doubles- Runner Up)",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/31.jpg`,
   },
   {
     player_id: 32,
@@ -324,7 +324,7 @@ const samplePlayers = [
     current_status: "unsold",
     achievements:
       "Winner at zonal and Runner up at inter zonal badminton tournament at Shivaji University Kolhapur",
-        photo: `images/${player_id}.jpg`,
+        photo: `images/31.jpg`,
 
   },
   {
@@ -335,7 +335,7 @@ const samplePlayers = [
     previous_team: "Sangli",
     current_status: "unsold",
     achievements: "Runner up in Pune local tournament",
-        photo: `images/${player_id}.jpg`,
+        photo: `images/32.jpg`,
 
   },
   {
@@ -347,7 +347,7 @@ const samplePlayers = [
     current_status: "unsold",
     achievements:
       "Winner of Sangli District Badminton Tournament 2023. Winner U19 & Mixed Doubles and Runner Up Women's open. Now representing Sangli District. Maharashtra Open Siddhant Smash Master Badminton Tournament, Pune in 2024 - Runner-up in Doubles Open",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/33.jpg`,
   },
   {
     player_id: 35,
@@ -357,7 +357,7 @@ const samplePlayers = [
     previous_team: "Solapur",
     current_status: "unsold",
     achievements: "Winner U19 & Mixed Doubles and Runner Up Women's open.",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/34.jpg`,
   },
   {
     player_id: 36,
@@ -367,7 +367,7 @@ const samplePlayers = [
     previous_team: "Sangli",
     current_status: "unsold",
     achievements: "Now representing Sangli District.",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/35.jpg`,
   },
   {
     player_id: 37,
@@ -378,7 +378,7 @@ const samplePlayers = [
     current_status: "unsold",
     achievements:
       "Maharashtra Open Siddhant Smash Master Badminton Tournament,",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/36.jpg`,
   },
   {
     player_id: 38,
@@ -388,7 +388,7 @@ const samplePlayers = [
     previous_team: "Satara",
     current_status: "unsold",
     achievements: "Pune in 2024 - Runner-up in Doubles Open",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/37.jpg`,
   },
   {
     player_id: 39,
@@ -398,7 +398,7 @@ const samplePlayers = [
     previous_team: "Sangli",
     current_status: "unsold",
     achievements: "U11 State winner ,U13 State Semifinalist",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/38.jpg`,
   },
   {
     player_id: 40,
@@ -408,7 +408,7 @@ const samplePlayers = [
     previous_team: "Pune",
     current_status: "unsold",
     achievements: "India rank top 40",
-    photo: `images/${player_id}.jpg`,
+    photo: `images/39.jpg`,
   },
   {
     player_id: 41,
@@ -419,7 +419,7 @@ const samplePlayers = [
     current_status: "unsold",
     achievements:
       "Rajabhau Kotnis Badminton Tour Karad 2019, School level U19 Dist Selection Satara, Pressfit State Open Mumbai 2020, State Tournament Pune 2020, Satara Dist Tournament 2020 & 2022, Sangli Multi Dist 2022, Interzonal Shivaji University Team, Rajabhau Kotnis Karad 2022, Karad Taluka Doubles 3rd place, Satara Dist Selection 2023",
-    photo: "images/download.jpg",
+    photo: "image/download.jpg",
   },
   {
     player_id: 42,
