@@ -99,7 +99,10 @@ function showNextPlayer() {
       rendering = false; // ✅ Reset here before return
       return;
     }
-    player = reAuctionList[reAuctionIndex++];
+    while(reAuctionList.length > 4)
+    {
+      player = reAuctionList[reAuctionIndex++];
+    }
   }
 
   console.log("Calling renderPlayerCard for player:", player);
