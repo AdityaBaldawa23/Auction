@@ -75,6 +75,7 @@ function showNextPlayer() {
   let player;
 
   if (!isReAuction) {
+    // Normal auction flow
     if (currentIndex >= shuffledPlayers.length) {
       if (reAuctionList.length > 0) {
         container.innerHTML = `<h2 style="color: orange;">🔁 Normal auction complete.</h2><p>Click the button or press Enter to begin Re-Auction Round.</p>`;
@@ -101,7 +102,9 @@ function showNextPlayer() {
     if (reAuctionIndex >= reAuctionList.length) {
       // Reached end of current round, restart from beginning
       reAuctionIndex = 0;
-      container.innerHTML = `<h2 style="color: orange;">🔁 Re-Auction Round complete. Starting again for unsold players...</h2>`;
+      container.innerHTML = `<h2 style="color: orange;">🔁 Re-Auction Round complete. Restarting for unsold players...</h2>`;
+      // Instead of waiting for the button click, let's just continue the loop
+      setTimeout(showNextPlayer, 2000); // Restart the cycle automatically
       rendering = false;
       return;
     }
@@ -114,6 +117,7 @@ function showNextPlayer() {
 
   rendering = false;
 }
+
 
 
 function startReauction() {
@@ -345,7 +349,8 @@ document.getElementById("confirmSell").onclick = () => {
     soldPoints: soldPoints,
   };
   document.getElementById("editLastSoldBtn").style.display = "inline-block";
-  document.getElementById("editLastSoldBtn").style.margin = "50px";
+  document.getElementById("editLastSoldBtn").style.marginTop = "50px";
+  document.getElementById("editLastSoldBtn").style.marginBottom = "50px";
   document.getElementById("editLastSoldBtn").style.backgroundColor = "blue";
 };
 
