@@ -319,7 +319,7 @@
       .then(data => {
         const container = document.getElementById("unsoldContainer");
 
-        ["A+", "A", "35+", "45+", "Female"].forEach(category => {
+        ["A+", "Open", "35+", "45+", "Female"].forEach(category => {
           const categoryPlayers = data[category] || [];
 
           const section = document.createElement("div");

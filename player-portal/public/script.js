@@ -20,7 +20,7 @@ if (savedPlayers) {
       // Step 1: Categorize based on new categories
       const categories = {
         "A+": [],
-        "A": [],
+        "Open": [],
         "35+": [],
         "45+": [],
         "Female": [],
@@ -28,7 +28,7 @@ if (savedPlayers) {
 
       players.forEach((p) => {
         if (p.category === "A+") categories["A+"].push(p);
-        else if (p.category === "A") categories["A"].push(p);
+        else if (p.category === "Open") categories["Open"].push(p);
         else if (p.category === "35+") categories["35+"].push(p);
         else if (p.category === "45+") categories["45+"].push(p);
         else if (p.gender === "Female") categories["Female"].push(p);
@@ -40,13 +40,13 @@ if (savedPlayers) {
       }
 
       // Step 3: Define pattern and pointer
-      const sequencePattern = ["A+", "A", "35+", "45+", "Female"];
+      const sequencePattern = ["A+", "Open", "35+", "45+", "Female"];
       let patternIndex = 0;
 
       // Step 4: Build shuffledPlayers based on pattern
       while (
         categories["A+"].length ||
-        categories["A"].length ||
+        categories["Open"].length ||
         categories["35+"].length ||
         categories["45+"].length ||
         categories["Female"].length
