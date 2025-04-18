@@ -137,12 +137,21 @@ button:hover {
 }
 
 .logo {
-  position: fixed;
+  /* position: fixed; */
   top: 20px;
   left: 40px;
-  height: 60px;
   z-index: 10;
+  max-width: 20vw;
+  min-width: 80px;
 }
+
+.logo img {
+  width: 100%;
+  height: auto;
+  max-height: 120px;
+  object-fit: contain;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
