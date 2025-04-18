@@ -1,31 +1,33 @@
 {
-  "TeamA": {
-    "players": [
-      {
-        "player_name": "Manju",
-        "category": "D",
-        "points": 5000,
-        "max_bid": 55000
-      }
-    ],
-    "total_points": 5000
-  },
-  "TeamB": {
-    "players": [
-      {
-        "player_name": "Neil",
-        "category": "B",
-        "points": 5000,
-        "max_bid": 55000
-      }
-    ],
-    "total_points": 5000
-  },
-  "TeamC": {
+  "Net Dominators": {
     "players": [],
     "total_points": 0
   },
-  "TeamD": {
+  "Spartans": {
+    "players": [],
+    "total_points": 0
+  },
+  "RJBA Dominators": {
+    "players": [],
+    "total_points": 0
+  },
+  "Shriram Smashers": {
+    "players": [],
+    "total_points": 0
+  },
+  "Kolhapur Raptors": {
+    "players": [],
+    "total_points": 0
+  },
+  "KBC Shuttlers": {
+    "players": [],
+    "total_points": 0
+  },
+  "Rucks Royal": {
+    "players": [],
+    "total_points": 0
+  },
+  "Eagle Warriors": {
     "players": [],
     "total_points": 0
   }

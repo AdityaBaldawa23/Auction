@@ -244,7 +244,7 @@
 
   <script>
     // Fetch current player being auctioned
-    fetch("https://auction-ve9y.onrender.com/api/current-player")
+    fetch("https://auction-ve9y.onrender.com/api/current-player", { cache: 'no-store' })
       .then(res => res.json())
       .then(player => {
         document.getElementById("playerName").textContent = player.player_name;
@@ -274,8 +274,8 @@
           box.appendChild(title);
 
           const totalUsed = teamData.players.reduce((sum, p) => sum + (parseInt(p.points) || 0), 0);
-          const totalRemaining = 60000 - teamData.total_points;
-          const maxBid = 60000 - teamData.total_points - (8 - teamData.players.length) * 1000;
+          const totalRemaining = 100000 - teamData.total_points;
+          const maxBid = 100000 - teamData.total_points - (11 - teamData.players.length) * 1000;
 
           const stats = document.createElement("p");
           stats.innerHTML = `
@@ -353,7 +353,7 @@
 
               card.innerHTML = `
               <h4 style="color:#58a6ff;">${player.player_name}</h4>
-              <p><strong>Prev. Team:</strong> ${player.previous_team}</p>
+              <p><strong>District:</strong> ${player.previous_team}</p>
               <p><strong>Achievements:</strong> ${player.achievements}</p>
             `;
 

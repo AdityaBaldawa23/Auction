@@ -227,7 +227,7 @@ app.get("/api/unsold-players", async (req, res) => {
     );
 
     // Group by category
-    const grouped = { A: [], B: [], C: [], D: [] };
+    const grouped = { "A+": [], "A": [], "35+": [], "45+": [], "Female": []};
     unsoldPlayers.forEach((player) => {
       const cat = player.category;
       if (grouped[cat]) {
