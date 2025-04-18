@@ -149,6 +149,7 @@ function renderPlayerCard(player) {
     player.photo !== "N/A"
       ? player.photo
       : "https://via.placeholder.com/200x200?text=Player";
+      console.log(src);
   img.alt = player.player_name;
 
   const details = document.createElement("div");
