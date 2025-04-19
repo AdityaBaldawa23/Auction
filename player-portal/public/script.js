@@ -42,7 +42,7 @@ if (savedPlayers) {
       }
 
       // Step 3: Define pattern and pointer
-      const sequencePattern = ["A+", "Open", "35+", "45+", "Female"];
+      const sequencePattern = ["A+", "Open", "Open", "Open", "35+", "45+", "Female"];
       let patternIndex = 0;
 
       // Step 4: Build shuffledPlayers based on pattern
