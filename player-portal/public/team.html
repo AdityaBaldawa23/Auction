@@ -181,6 +181,10 @@
         font-size: 1em;
       }
 
+      #teamsContainer {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .team-box h2 {
         font-size: 1.2em;
       }
@@ -210,6 +214,10 @@
 
       .team-box p {
         font-size: 1em;
+      }
+
+      #teamsContainer {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -273,52 +281,77 @@
           const title = document.createElement("h2");
           title.textContent = teamName;
           box.appendChild(title);
-          const playerCount = document.createElement("p");
-          box.appendChild(playerCount);
 
-          const captainCost = 20000;
-          const mentorCost = 15000;
+          // Setup points
+          const captainPoints = 20000;
+          const mentorPoints = 15000;
 
           const totalUsedByPlayers = teamData.players.reduce((sum, p) => sum + (parseInt(p.points) || 0), 0);
-          const totalUsed = totalUsedByPlayers + captainCost + mentorCost;
+          const totalUsed = totalUsedByPlayers + captainPoints + mentorPoints;
           const totalRemaining = 100000 - totalUsed;
           const maxBid = totalRemaining - (11 - teamData.players.length) * 1000;
 
           const stats = document.createElement("p");
           stats.innerHTML = `
-  <strong>Players:</strong> ${teamData.players.length} |
-  <strong>Captain:</strong> ${teamData.captain || "N/A"} |
-  <strong>Mentor:</strong> ${teamData.mentor || "N/A"}<br>
-  <strong>Total Used:</strong> ${totalUsed} |
-  <strong>Remaining:</strong> ${totalRemaining} |
-  <strong>Max Bid:</strong> ${maxBid}`;
-
+    <strong>Players:</strong> ${teamData.players.length + 2} |
+    <strong>Total Used:</strong> ${totalUsed} |
+    <strong>Remaining:</strong> ${totalRemaining} |
+    <strong>Max Bid:</strong> ${maxBid}`;
           box.appendChild(stats);
 
+          // Create Table
           const table = document.createElement("table");
           table.innerHTML = `
-              <tr>
-                <th>#</th>
-                <th>Player Name</th>
-                <th>Category</th>
-                <th>Points</th>
-              </tr>
-            `;
+    <tr>
+      <th>#</th>
+      <th>Player Name</th>
+      <th>Category</th>
+      <th>Points</th>
+    </tr>
+  `;
 
+          let rowIndex = 1;
+
+          // Add Captain
+          if (teamData.captain) {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+      <td>${rowIndex++}</td>
+      <td>${teamData.captain} <span style="color:#ffa657;">(Captain)</span></td>
+      <td>A+</td>
+      <td>${captainPoints}</td>
+    `;
+            table.appendChild(row);
+          }
+
+          // Add Mentor
+          if (teamData.mentor) {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+      <td>${rowIndex++}</td>
+      <td>${teamData.mentor} <span style="color:#ffa657;">(Mentor)</span></td>
+      <td>Mentor</td>
+      <td>${mentorPoints}</td>
+    `;
+            table.appendChild(row);
+          }
+
+          // Add Other Players
           teamData.players.forEach((p, idx) => {
             const row = document.createElement("tr");
             row.innerHTML = `
-                <td>${idx + 1}</td>
-                <td>${p.player_name}</td>
-                <td>${p.category}</td>
-                <td>${p.points}</td>
-              `;
+      <td>${rowIndex++}</td>
+      <td>${p.player_name}</td>
+      <td>${p.category}</td>
+      <td>${p.points}</td>
+    `;
             table.appendChild(row);
           });
 
           box.appendChild(table);
           container.appendChild(box);
         });
+
       })
       .catch((err) => {
         console.error("Failed to fetch team data:", err);

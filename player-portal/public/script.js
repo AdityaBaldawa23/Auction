@@ -23,7 +23,7 @@ if (savedPlayers) {
         "Open": [],
         "35+": [],
         "45+": [],
-        "Female": [],
+        Female: [],
       };
 
       players.forEach((p) => {
