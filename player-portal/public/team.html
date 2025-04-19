@@ -262,6 +262,7 @@
         document.getElementById("playerAchievements").textContent = player.achievements;
         document.getElementById("playerPhoto").src = player.photo !== "N/A" ? player.photo : "https://via.placeholder.com/220";
         document.getElementById("playerPhoto").style.maxHeight = "400px"
+        document.getElementById("playerPhoto").style.objectFit = "contain"
       })
       .catch(err => {
         console.error("Failed to fetch current player:", err);

@@ -3,13 +3,13 @@
     "players": [
       {
         "player_name": "Varad Gajbhiye",
-        "players.category": "A+",
-        "players.points": "0"
+        "category": "A+",
+        "points": "0"
       },
       {
         "player_name": "Sachin Sarda",
-        "players.category": "45+",
-        "players.points": "0"
+        "category": "45+",
+        "points": "0"
       }
     ],
     "total_points": -35000
@@ -18,13 +18,13 @@
     "players": [
       {
         "player_name": "Tejas Shinde",
-        "players.category": "A+",
-        "players.points": "0"
+        "category": "A+",
+        "points": "0"
       },
       {
         "player_name": "Shivkiran Singh Thakur",
-        "players.category": "45+",
-        "players.points": "0"
+        "category": "45+",
+        "points": "0"
       }
     ],
     "total_points": -35000
@@ -33,13 +33,13 @@
     "players": [
       {
         "player_name": "Sharad Vhanmore",
-        "players.category": "A+",
-        "players.points": "0"
+        "category": "A+",
+        "points": "0"
       },
       {
         "player_name": "Arshad Shaikh",
-        "players.category": "45+",
-        "players.points": "0"
+        "category": "45+",
+        "points": "0"
       }
     ],
     "total_points": -35000
@@ -48,13 +48,13 @@
     "players": [
       {
         "player_name": "Harshal Jadhav",
-        "players.category": "A+",
-        "players.points": "0"
+        "category": "A+",
+        "points": "0"
       },
       {
         "player_name": "Rakesh Pethare",
-        "players.category": "45+",
-        "players.points": "0"
+        "category": "45+",
+        "points": "0"
       }
     ],
     "total_points": -35000
@@ -63,13 +63,13 @@
     "players": [
       {
         "player_name": "Rahul Kanne",
-        "players.category": "A+",
-        "players.points": "0"
+        "category": "A+",
+        "points": "0"
       },
       {
         "player_name": "Ninad Kamat",
-        "players.category": "45+",
-        "players.points": "0"
+        "category": "45+",
+        "points": "0"
       }
     ],
     "total_points": -35000
@@ -78,13 +78,13 @@
     "players": [
       {
         "player_name": "Omkar Palkar",
-        "players.category": "A+",
-        "players.points": "0"
+        "category": "A+",
+        "points": "0"
       },
       {
         "player_name": "Nilesh Fansalkar",
-        "players.category": "45+",
-        "players.points": "0"
+        "category": "45+",
+        "points": "0"
       }
     ],
     "total_points": -35000
@@ -93,13 +93,13 @@
     "players": [
       {
         "player_name": "Ganesh Sapkal",
-        "players.category": "A+",
-        "players.points": "0"
+        "category": "A+",
+        "points": "0"
       },
       {
         "player_name": "Nitin Gadve",
-        "players.category": "45+",
-        "players.points": "0"
+        "category": "45+",
+        "points": "0"
       }
     ],
     "total_points": -35000
@@ -108,13 +108,13 @@
     "players": [
       {
         "player_name": "Vedant Shinde",
-        "players.category": "A+",
-        "players.points": "0"
+        "category": "A+",
+        "points": "0"
       },
       {
         "player_name": "Pritam Pawar",
-        "players.category": "45+",
-        "players.points": "0"
+        "category": "45+",
+        "points": "0"
       }
     ],
     "total_points": -35000
