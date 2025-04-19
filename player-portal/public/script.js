@@ -20,7 +20,7 @@ if (savedPlayers) {
       // Step 1: Categorize based on new categories
       const categories = {
         "A+": [],
-        "Open": [],
+        Open: [],
         "35+": [],
         "45+": [],
         Female: [],
@@ -33,6 +33,8 @@ if (savedPlayers) {
         else if (p.category === "45+") categories["45+"].push(p);
         else if (p.gender === "Female") categories["Female"].push(p);
       });
+
+      console.log(categories.Female);
 
       // Step 2: Shuffle each category
       for (let key in categories) {
