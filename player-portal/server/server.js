@@ -172,57 +172,57 @@ app.post("/api/reset", (req, res) => {
   const defaultData = {
     "Net Dominators": {
       players: [
-        { player_name: "Varad Gajbhiye", "players.category": "A+", "players.points": "0" },
-        { player_name: "Sachin Sarda", "players.category": "45+", "players.points": "0" }
+        { player_name: "Varad Gajbhiye", "category": "A+", "points": "0" },
+        { player_name: "Sachin Sarda", "category": "45+", "points": "0" }
       ],
       total_points: -35000
     },
     "Spartans": {
       players: [
-        { player_name: "Tejas Shinde", "players.category": "A+", "players.points": "0" },
-        { player_name: "Shivkiran Singh Thakur", "players.category": "45+", "players.points": "0" }
+        { player_name: "Tejas Shinde", "category": "A+", "points": "0" },
+        { player_name: "Shivkiran Singh Thakur", "category": "45+", "points": "0" }
       ],
       total_points: -35000
     },
     "RJBA Dominators": {
       players: [
-        { player_name: "Sharad Vhanmore", "players.category": "A+", "players.points": "0" },
-        { player_name: "Arshad Shaikh", "players.category": "45+", "players.points": "0" }
+        { player_name: "Sharad Vhanmore", "category": "A+", "points": "0" },
+        { player_name: "Arshad Shaikh", "category": "45+", "points": "0" }
       ],
       total_points: -35000
     },
     "Shriram Smashers": {
       players: [
-        { player_name: "Harshal Jadhav", "players.category": "A+", "players.points": "0" },
-        { player_name: "Rakesh Pethare", "players.category": "45+", "players.points": "0" }
+        { player_name: "Harshal Jadhav", "category": "A+", "points": "0" },
+        { player_name: "Rakesh Pethare", "category": "45+", "points": "0" }
       ],
       total_points: -35000
     },
     "Kolhapur Raptors": {
       players: [
-        { player_name: "Rahul Kanne", "players.category": "A+", "players.points": "0" },
-        { player_name: "Ninad Kamat", "players.category": "45+", "players.points": "0" }
+        { player_name: "Rahul Kanne", "category": "A+", "players.points": "0" },
+        { player_name: "Ninad Kamat", "category": "45+", "players.points": "0" }
       ],
       total_points: -35000
     },
     "KBC Shuttlers": {
       players: [
-        { player_name: "Omkar Palkar", "players.category": "A+", "players.points": "0" },
-        { player_name: "Nilesh Fansalkar", "players.category": "45+", "players.points": "0" }
+        { player_name: "Omkar Palkar", "category": "A+", "points": "0" },
+        { player_name: "Nilesh Fansalkar", "category": "45+", "points": "0" }
       ],
       total_points: -35000
     },
     "Rucks Royal": {
       players: [
-        { player_name: "Ganesh Sapkal", "players.category": "A+", "players.points": "0" },
-        { player_name: "Nitin Gadve", "players.category": "45+", "players.points": "0" }
+        { player_name: "Ganesh Sapkal", "category": "A+", "points": "0" },
+        { player_name: "Nitin Gadve", "category": "45+", "points": "0" }
       ],
       total_points: -35000
     },
     "Eagle Warriors": {
       players: [
-        { player_name: "Vedant Shinde", "players.category": "A+", "players.points": "0" },
-        { player_name: "Pritam Pawar", "players.category": "45+", "players.points": "0" }
+        { player_name: "Vedant Shinde", "category": "A+", "points": "0" },
+        { player_name: "Pritam Pawar", "category": "45+", "points": "0" }
       ],
       total_points: -35000
     }

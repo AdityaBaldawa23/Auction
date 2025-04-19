@@ -18,21 +18,43 @@ if (savedPlayers) {
       players = players.flat();
 
       // Step 1: Categorize based on new categories
-      const categories = {
-        "A+": [],
-        Open: [],
-        "35+": [],
-        "45+": [],
-        Female: [],
-      };
+// Step 1: Categorize based on new categories
+const categories = {
+  "A+": [],
+  Open: [],
+  "35+": [],
+  "45+": [],
+  Female: [],
+};
 
-      players.forEach((p) => {
-        if (p.category === "A+") categories["A+"].push(p);
-        else if (p.category === "Open") categories["Open"].push(p);
-        else if (p.category === "35+") categories["35+"].push(p);
-        else if (p.category === "45+") categories["45+"].push(p);
-        else if (p.category === "Female") categories["Female"].push(p);
-      });
+const excludedPlayers = [
+  "Varad Gajbhiye",
+  "Sachin Sarda",
+  "Tejas Shinde",
+  "Shivkiran Singh Thakur",
+  "Sharad Vhanmore",
+  "Arshad Shaikh",
+  "Harshal Jadhav",
+  "Rakesh Pethare",
+  "Rahul Kanne",
+  "Ninad Kamat",
+  "Omkar Palkar",
+  "Nilesh Fansalkar",
+  "Ganesh Sapkal",
+  "Nitin Gadve",
+  "Vedant Shinde",
+  "Pritam Pawar",
+];
+
+players.forEach((p) => {
+  if (excludedPlayers.includes(p.player_name)) return; // 🔥 Skip this player
+
+  if (p.category === "A+") categories["A+"].push(p);
+  else if (p.category === "Open") categories["Open"].push(p);
+  else if (p.category === "35+") categories["35+"].push(p);
+  else if (p.category === "45+") categories["45+"].push(p);
+  else if (p.category === "Female") categories["Female"].push(p);
+});
 
       console.log(categories.Female);
 
