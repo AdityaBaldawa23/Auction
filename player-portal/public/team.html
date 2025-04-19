@@ -364,8 +364,14 @@
       .then(data => {
         const container = document.getElementById("unsoldContainer");
 
+        const normalizedData = {};
+        for (const key in data) {
+          normalizedData[key.trim().toLowerCase()] = data[key];
+        }
+
         ["A+", "Open", "35+", "45+", "Female"].forEach(category => {
-          const categoryPlayers = data[category] || [];
+          const key = category.trim().toLowerCase();
+          const categoryPlayers = normalizedData[key] || [];
 
           const section = document.createElement("div");
           section.style.marginBottom = "40px";
@@ -397,10 +403,10 @@
               card.style.boxShadow = "0 4px 10px rgba(90,90,90,0.08)";
 
               card.innerHTML = `
-                <h4 style="color:#58a6ff;">${player.player_name}</h4>
-                <p><strong>District:</strong> ${player.previous_team}</p>
-                <p><strong>Achievements:</strong> ${player.achievements}</p>
-              `;
+            <h4 style="color:#58a6ff;">${player.player_name}</h4>
+            <p><strong>District:</strong> ${player.previous_team}</p>
+            <p><strong>Achievements:</strong> ${player.achievements}</p>
+          `;
 
               grid.appendChild(card);
             });
@@ -409,6 +415,7 @@
           }
         });
       })
+
       .catch(err => {
         console.error("Failed to fetch unsold players:", err);
       });
