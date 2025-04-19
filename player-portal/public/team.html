@@ -276,36 +276,43 @@
           const playerCount = document.createElement("p");
           box.appendChild(playerCount);
 
-          const totalUsed = teamData.players.reduce((sum, p) => sum + (parseInt(p.points) || 0), 0);
-          const totalRemaining = 100000 - teamData.total_points;
-          const maxBid = 100000 - teamData.total_points - (11 - teamData.players.length) * 1000;
+          const captainCost = 20000;
+          const mentorCost = 15000;
+
+          const totalUsedByPlayers = teamData.players.reduce((sum, p) => sum + (parseInt(p.points) || 0), 0);
+          const totalUsed = totalUsedByPlayers + captainCost + mentorCost;
+          const totalRemaining = 100000 - totalUsed;
+          const maxBid = totalRemaining - (11 - teamData.players.length) * 1000;
 
           const stats = document.createElement("p");
           stats.innerHTML = `
-            <strong>Players:</strong> ${teamData.players.length}|
-            <strong>Total Used:</strong> ${totalUsed} |
-            <strong>Remaining:</strong> ${totalRemaining} |
-            <strong>Max Bid:</strong> ${maxBid}`;
+  <strong>Players:</strong> ${teamData.players.length} |
+  <strong>Captain:</strong> ${teamData.captain || "N/A"} |
+  <strong>Mentor:</strong> ${teamData.mentor || "N/A"}<br>
+  <strong>Total Used:</strong> ${totalUsed} |
+  <strong>Remaining:</strong> ${totalRemaining} |
+  <strong>Max Bid:</strong> ${maxBid}`;
+
           box.appendChild(stats);
 
           const table = document.createElement("table");
           table.innerHTML = `
-            <tr>
-              <th>#</th>
-              <th>Player Name</th>
-              <th>Category</th>
-              <th>Points</th>
-            </tr>
-          `;
+              <tr>
+                <th>#</th>
+                <th>Player Name</th>
+                <th>Category</th>
+                <th>Points</th>
+              </tr>
+            `;
 
           teamData.players.forEach((p, idx) => {
             const row = document.createElement("tr");
             row.innerHTML = `
-              <td>${idx + 1}</td>
-              <td>${p.player_name}</td>
-              <td>${p.category}</td>
-              <td>${p.points}</td>
-            `;
+                <td>${idx + 1}</td>
+                <td>${p.player_name}</td>
+                <td>${p.category}</td>
+                <td>${p.points}</td>
+              `;
             table.appendChild(row);
           });
 
@@ -356,10 +363,10 @@
               card.style.boxShadow = "0 4px 10px rgba(90,90,90,0.08)";
 
               card.innerHTML = `
-              <h4 style="color:#58a6ff;">${player.player_name}</h4>
-              <p><strong>District:</strong> ${player.previous_team}</p>
-              <p><strong>Achievements:</strong> ${player.achievements}</p>
-            `;
+                <h4 style="color:#58a6ff;">${player.player_name}</h4>
+                <p><strong>District:</strong> ${player.previous_team}</p>
+                <p><strong>Achievements:</strong> ${player.achievements}</p>
+              `;
 
               grid.appendChild(card);
             });

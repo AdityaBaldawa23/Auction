@@ -1,34 +1,50 @@
 {
   "Net Dominators": {
     "players": [],
-    "total_points": 0
+    "total_points": -35000,
+    "captain": "Varad Gajbhiye",
+    "mentor": "Sachin Sarada"
   },
   "Spartans": {
     "players": [],
-    "total_points": 0
+    "total_points": -35000,
+    "captain": "Tejas Shinde",
+    "mentor": "Shivkiran Singh Thakur"
   },
   "RJBA Dominators": {
     "players": [],
-    "total_points": 0
+    "total_points": -35000,
+    "captain": "Sharad Vhanmore",
+    "mentor": "Arshad Shaikh"
   },
   "Shriram Smashers": {
     "players": [],
-    "total_points": 0
+    "total_points": -35000,
+    "captain": "Harshal Jadhav",
+    "mentor": "Rakesh Pethare"
   },
   "Kolhapur Raptors": {
     "players": [],
-    "total_points": 0
+    "total_points": -35000,
+    "captain": "Rahul Kanne",
+    "mentor": "Ninad Kamat"
   },
   "KBC Shuttlers": {
     "players": [],
-    "total_points": 0
+    "total_points": -35000,
+    "captain": "Omkar Palkar",
+    "mentor": "Nilesh Fansalkar"
   },
   "Rucks Royal": {
     "players": [],
-    "total_points": 0
+    "total_points": -35000,
+    "captain": "Ganesh Sapkal",
+    "mentor": "Nitin Gadve"
   },
   "Eagle Warriors": {
     "players": [],
-    "total_points": 0
+    "total_points": -35000,
+    "captain": "Vedant Shinde",
+    "mentor": "Pritam Pawar"
   }
 }
