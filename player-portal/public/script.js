@@ -20,10 +20,10 @@ if (savedPlayers) {
       // Step 1: Categorize based on new categories
       const categories = {
         "A+": [],
-        Open: [],
+        "Open": [],
         "35+": [],
         "45+": [],
-        Female: [],
+        "Female": [],
       };
 
       players.forEach((p) => {

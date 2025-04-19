@@ -253,6 +253,7 @@
         document.getElementById("playerCategory").textContent = player.category;
         document.getElementById("playerAchievements").textContent = player.achievements;
         document.getElementById("playerPhoto").src = player.photo !== "N/A" ? player.photo : "https://via.placeholder.com/220";
+        document.getElementById("playerPhoto").style.maxHeight = "200px"
       })
       .catch(err => {
         console.error("Failed to fetch current player:", err);
@@ -272,6 +273,8 @@
           const title = document.createElement("h2");
           title.textContent = teamName;
           box.appendChild(title);
+          const playerCount = document.createElement("p");
+          box.appendChild(playerCount);
 
           const totalUsed = teamData.players.reduce((sum, p) => sum + (parseInt(p.points) || 0), 0);
           const totalRemaining = 100000 - teamData.total_points;
@@ -279,6 +282,7 @@
 
           const stats = document.createElement("p");
           stats.innerHTML = `
+            <strong>Players:</strong> ${teamData.players.length}|
             <strong>Total Used:</strong> ${totalUsed} |
             <strong>Remaining:</strong> ${totalRemaining} |
             <strong>Max Bid:</strong> ${maxBid}`;
@@ -326,7 +330,7 @@
           section.style.marginBottom = "40px";
 
           const title = document.createElement("h3");
-          title.textContent = `Category ${category}`;
+          title.textContent = `${category} Category `;
           title.style.color = "#ffa657";
           title.style.fontSize = "1.5em";
           title.style.marginBottom = "15px";
