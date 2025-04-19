@@ -31,7 +31,7 @@ if (savedPlayers) {
         else if (p.category === "Open") categories["Open"].push(p);
         else if (p.category === "35+") categories["35+"].push(p);
         else if (p.category === "45+") categories["45+"].push(p);
-        else if (p.gender === "Female") categories["Female"].push(p);
+        else if (p.category === "Female") categories["Female"].push(p);
       });
 
       console.log(categories.Female);
