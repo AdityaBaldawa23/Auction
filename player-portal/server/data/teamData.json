@@ -10,7 +10,12 @@
         "player_name": "Sachin Sarda",
         "category": "45+",
         "points": "0"
-      }
+      },
+      {
+        "player_name": "Ritesh Sandugade",
+        "category": "A+",
+        "points": "26000"
+      },
     ],
     "total_points": -35000
   },
@@ -25,6 +30,11 @@
         "player_name": "Shivkiran Singh Thakur",
         "category": "45+",
         "points": "0"
+      },
+      {
+        "player_name": "Rahul Patil",
+        "category": "Open",
+        "points": "6000"
       }
     ],
     "total_points": -35000
@@ -40,7 +50,22 @@
         "player_name": "Arshad Shaikh",
         "category": "45+",
         "points": "0"
-      }
+      },
+      {
+        "player_name": "Rushin Joshi",
+        "category": "Open",
+        "points": "10000"
+      },
+      {
+        "player_name": "Tushar S Mulay",
+        "category": "35+",
+        "points": "21000"
+      },
+      {
+        "player_name": "Hemant subhash jogalekar",
+        "category": "45+",
+        "points": "4500"
+      },
     ],
     "total_points": -35000
   },
@@ -53,7 +78,13 @@
       },
       {
         "player_name": "Rakesh Pethare",
-        "category": "45+",
+        "category": "35+",
+        "points": "0"
+      },
+      
+      {
+        "player_name": "Omkar Bhurke",
+        "category": "Open",
         "points": "0"
       }
     ],
@@ -70,6 +101,11 @@
         "player_name": "Ninad Kamat",
         "category": "45+",
         "points": "0"
+      },
+      {
+        "player_name": "Shruti Vijay Lohar",
+        "category" : "Female",
+        "points" : "2000"
       }
     ],
     "total_points": -35000
@@ -85,6 +121,11 @@
         "player_name": "Nilesh Fansalkar",
         "category": "45+",
         "points": "0"
+      },
+      {
+        "player_name": "Saleel Maneri",
+        "category": "Open",
+        "points": "18000"
       }
     ],
     "total_points": -35000
@@ -115,6 +156,17 @@
         "player_name": "Pritam Pawar",
         "category": "45+",
         "points": "0"
+      },
+      {
+        "player_name": "Digvijay Pawar",
+        "category": "A+",
+        "points": "20000"
+      },
+      
+      {
+        "player_name": "Abhishek Pawar",
+        "category": "Open",
+        "points": "1000"
       }
     ],
     "total_points": -35000
